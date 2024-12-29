@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
           backgroundColor: Colors.blueAccent,
         ),
         body: Center(
-          child: Text('Hello World! yash 2'),
+          child: Text('Hello World! aditya 2'),
         ),
       ),
     );
