@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:git_trial/Models/home_tab_model.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../Models/home_tab_model.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-  
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -41,7 +38,7 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildSliverAppBar() {
-    return  SliverAppBar(
+    return SliverAppBar(
       stretchTriggerOffset: 200,
       shadowColor: const Color.fromARGB(255, 249, 66, 66),
       shape: const Border(
@@ -69,12 +66,10 @@ class HomeTabCard extends StatelessWidget {
   final String imagePath;
   final String name;
 
-
   const HomeTabCard({
     super.key,
     required this.imagePath,
     required this.name,
-  
   });
 
   @override
@@ -108,10 +103,10 @@ class HomeTabCard extends StatelessWidget {
           const Gap(16),
           Text(
             name,
-            style:const TextStyle(
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color:  Color.fromRGBO(25, 33, 38, 1),
+              color: Color.fromRGBO(25, 33, 38, 1),
             ),
           ),
         ],
