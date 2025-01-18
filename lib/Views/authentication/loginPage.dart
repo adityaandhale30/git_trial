@@ -1,5 +1,7 @@
 //import 'dart:ui';
 
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_cloud_firestore/firebase_cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,10 +23,41 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool _isVisibility = true;
+  final _formKey = GlobalKey<FormState>();
 
-  _signIn({required String email, required String password}) async {
-    await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password);
+  /// Signs in a user with the provided email and password.
+  ///
+  /// Displays an error message using the `ScaffoldMessenger` if the sign-in fails.
+  Future<void> _signIn({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => HomeScreen(),
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      String errorMessage;
+      switch (e.code) {
+        case 'user-not-found':
+          errorMessage = 'No user found for that email.';
+          break;
+        case 'wrong-password':
+          errorMessage = 'Wrong password provided for that user.';
+          break;
+        default:
+          errorMessage = 'An error occurred: ${e.message}';
+          break;
+      }
+      log(errorMessage);
+    }
   }
 
   @override
@@ -63,6 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Form(
+                      key: _formKey,
                       child: Column(
                         children: [
                           TextFormField(
@@ -169,9 +203,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      _signIn(
+                      if (_formKey.currentState!.validate()) {
+                        _signIn(
                           email: emailController.text,
-                          password: passwordController.text);
+                          password: passwordController.text,
+                        );
+                      }
                     },
                     child: Container(
                       height: 40,

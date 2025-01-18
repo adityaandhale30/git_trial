@@ -73,210 +73,207 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              children: [
-                const SizedBox(height: 0),
-                Image.asset("assets/splash.png"),
-                const SizedBox(height: 10),
-                Container(
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: Text(
-                    "Sign Up ",
-                    style: GoogleFonts.ptSans(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w700,
-                    ),
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 0),
+              Image.asset("assets/splash.png"),
+              const SizedBox(height: 10),
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Text(
+                  "Sign Up ",
+                  style: GoogleFonts.ptSans(
+                    fontSize: 32,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
-                Container(
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: Text(
-                    "create an account to continue...",
-                    style: GoogleFonts.ptSans(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Text(
+                  "create an account to continue...",
+                  style: GoogleFonts.ptSans(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      // First name text field
-                      CustomTextField(
-                        controller: firstNameController,
-                        icon: Icons.person,
-                        hintText: "First Name",
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your first name';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 10),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    // First name text field
+                    CustomTextField(
+                      controller: firstNameController,
+                      icon: Icons.person,
+                      hintText: "First Name",
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your first name';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 10),
 
-                      // Last name text field
-                      CustomTextField(
-                        controller: lastNameController,
-                        icon: Icons.person,
-                        hintText: "Last Name",
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your last name';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 10),
+                    // Last name text field
+                    CustomTextField(
+                      controller: lastNameController,
+                      icon: Icons.person,
+                      hintText: "Last Name",
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your last name';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 10),
 
-                      // Email text field
-                      CustomTextField(
-                        controller: emailController,
-                        icon: Icons.email,
-                        hintText: "Email",
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
-                          } else if (!value.contains('@')) {
-                            return 'Please enter a valid email';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 10),
+                    // Email text field
+                    CustomTextField(
+                      controller: emailController,
+                      icon: Icons.email,
+                      hintText: "Email",
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
+                        } else if (!value.contains('@')) {
+                          return 'Please enter a valid email';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 10),
 
-                      // Password text field
-                      CustomTextField(
-                        controller: passwordController,
-                        icon: Icons.lock,
-                        obscureText: true,
-                        hintText: "Password",
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
-                          } else if (value.length < 8) {
-                            return 'Password must be at least 8 characters long';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 10),
+                    // Password text field
+                    CustomTextField(
+                      controller: passwordController,
+                      icon: Icons.lock,
+                      obscureText: true,
+                      hintText: "Password",
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your password';
+                        } else if (value.length < 8) {
+                          return 'Password must be at least 8 characters long';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 10),
 
-                      // Confirm password text field
-                      CustomTextField(
-                        controller: confirmPasswordController,
-                        icon: Icons.lock,
-                        obscureText: true,
-                        hintText: "Confirm Password",
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please confirm your password';
-                          } else if (value != passwordController.text) {
-                            return 'Passwords do not match';
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 14),
+                    // Confirm password text field
+                    CustomTextField(
+                      controller: confirmPasswordController,
+                      icon: Icons.lock,
+                      obscureText: true,
+                      hintText: "Confirm Password",
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please confirm your password';
+                        } else if (value != passwordController.text) {
+                          return 'Passwords do not match';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 14),
 
-                      // Error message
-                      if (errorMessage != null)
-                        Text(
-                          errorMessage!,
-                          style: const TextStyle(color: Colors.red),
+                    // Error message
+                    if (errorMessage != null)
+                      Text(
+                        errorMessage!,
+                        style: const TextStyle(color: Colors.red),
+                      ),
+                    const SizedBox(height: 10),
+
+                    // Sign up button
+                    GestureDetector(
+                      onTap: () {
+                        if (_formKey.currentState!.validate()) {
+                          _signUp(
+                            emailController.text,
+                            passwordController.text,
+                            firstNameController.text,
+                            lastNameController.text,
+                          );
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => const LoginScreen(),
+                            ),
+                          );
+                        }
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 250,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color.fromRGBO(75, 162, 106, 1),
                         ),
-                      const SizedBox(height: 10),
-
-                      // Sign up button
-                      GestureDetector(
-                        onTap: () {
-                          if (_formKey.currentState!.validate()) {
-                            _signUp(
-                              emailController.text,
-                              passwordController.text,
-                              firstNameController.text,
-                              lastNameController.text,
-                            );
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                builder: (context) => const LoginScreen(),
-                              ),
-                            );
-                          }
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 250,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: const Color.fromRGBO(75, 162, 106, 1),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Sign Up ",
-                              style: GoogleFonts.ptSans(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                              ),
+                        child: Center(
+                          child: Text(
+                            "Sign Up ",
+                            style: GoogleFonts.ptSans(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                const SizedBox(
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                  width: 242,
                   height: 20,
-                ),
-                SizedBox(
-                    width: 242,
-                    height: 20,
-                    //color: Colors.amber,
-                    child: Row(
-                      children: [
-                        Text(
-                          "Already have an account?",
+                  //color: Colors.amber,
+                  child: Row(
+                    children: [
+                      Text(
+                        "Already have an account?",
+                        style: GoogleFonts.alatsi(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                            decoration: TextDecoration.none),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop(MaterialPageRoute(
+                              builder: (context) => const LoginScreen()));
+                        },
+                        child: Text(
+                          "Log in",
                           style: GoogleFonts.alatsi(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
-                              color: Colors.black,
+                              color: const Color.fromRGBO(75, 162, 106, 1),
                               decoration: TextDecoration.none),
                         ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pop(MaterialPageRoute(
-                                builder: (context) => const LoginScreen()));
-                          },
-                          child: Text(
-                            "Log in",
-                            style: GoogleFonts.alatsi(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: const Color.fromRGBO(75, 162, 106, 1),
-                                decoration: TextDecoration.none),
-                          ),
-                        ),
-                      ],
-                    )),
-              ],
-            ),
+                      ),
+                    ],
+                  )),
+            ],
           ),
         ),
       ),
