@@ -82,7 +82,9 @@ class HomeTabCard extends StatelessWidget {
         log("message");
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => const PdfviewerCustom()),
+          MaterialPageRoute(
+            builder: (_) => const PdfviewerCustom(),
+          ),
         );
       },
       child: Container(
