@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:git_trial/Views/homescreen/pdfViewer_custom.dart';
 import 'package:git_trial/Views/splash_screen.dart';
 
 void main() async {
@@ -22,7 +23,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: PdfviewerCustom(),
     );
   }
 }
