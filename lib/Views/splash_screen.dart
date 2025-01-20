@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:git_trial/bottomnavigationbar_custom.dart';
 
+import '../authentication/loginPage.dart';
+
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -23,7 +25,7 @@ class SplashScreen extends StatelessWidget {
         ),
         child: GestureDetector(
           onTap: () {
-            Get.off(() => const BottomnavigationbarCustom());
+            Get.off(() => const LoginScreen());
           },
           child: Center(
             child: Image.asset("assets/splash.png"),

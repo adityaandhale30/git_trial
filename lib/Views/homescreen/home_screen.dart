@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../Models/home_tab_model.dart';
+import 'jobListPage.dart';
+import 'pdfViwer_custom.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -37,6 +40,12 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.to( ()=>PdfviewerCustom());
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 
@@ -45,10 +54,7 @@ class HomeScreen extends StatelessWidget {
       stretchTriggerOffset: 200,
       shadowColor: const Color.fromARGB(255, 249, 66, 66),
       shape: const Border(
-        bottom: BorderSide(
-          color: Color.fromARGB(255, 80, 191, 246),
-          width: 5,
-        ),
+       
       ),
       floating: true,
       stretch: true,
@@ -79,42 +85,47 @@ class HomeTabCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        color: Colors.white,
-        boxShadow: const [
-          BoxShadow(
-            color: Color.fromARGB(255, 106, 106, 106),
-            blurRadius: 15,
-            spreadRadius: 0,
-            offset: Offset(0, 6),
-          )
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Get.to( ()=>JobsListPage());
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Colors.white,
+          boxShadow: const [
+            BoxShadow(
+              color: Color.fromARGB(255, 106, 106, 106),
+              blurRadius: 15,
+              spreadRadius: 0,
+              offset: Offset(0, 6),
+            )
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          const Gap(16),
-          Text(
-            name,
-            style:const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color:  Color.fromRGBO(25, 33, 38, 1),
+            const Gap(16),
+            Text(
+              name,
+              style:const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color:  Color.fromRGBO(25, 33, 38, 1),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:git_trial/bottomnavigationbar_custom.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../Views/homescreen/home_screen.dart';
+import 'signUpPage.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -142,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               const BottomnavigationbarCustom()));
                     },
                     child: Container(
-                      height: 40,
+                      height: 60,
                       width: MediaQuery.sizeOf(context).width,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -164,8 +165,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 20,
                   ),
                   SizedBox(
-                      width: 242,
-                      height: 20,
+                      width: 300,
+                      height: 40,
                       //color: Colors.amber,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -184,7 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const HomeScreen()));
+                                  builder: (context) => const SignUpScreen()));
                             },
                             child: Text(
                               "sign up",

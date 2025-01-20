@@ -7,6 +7,7 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
+  fl_chart: ^0.70.2
   flutter:
     sdk: flutter
   gap: ^3.0.1
@@ -14,6 +15,7 @@ dependencies:
   google_fonts: ^6.2.1
   persistent_bottom_nav_bar: ^6.2.1
   pie_chart: ^5.4.0
+  syncfusion_flutter_pdfviewer: ^28.1.39
 
 dev_dependencies:
   flutter_test:
