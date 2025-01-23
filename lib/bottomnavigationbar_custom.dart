@@ -22,6 +22,7 @@ class BottomnavigationbarCustom extends StatelessWidget {
         const HomeScreen(),
         const AnalyticsScreen(),
         Container(),
+        
         PreviousStudentConnection(),
         StudentProfilePage(),
          
